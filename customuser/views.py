@@ -78,6 +78,13 @@ def password_recovery(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+def add_money(request):
+    request_unicode = request.body.decode('utf-8')
+    request_body = json.loads(request_unicode)
+    print(request_body)
+    request.user.balance += decimal.Decimal(request_body['amount'])
+    request.user.save()
+    return JsonResponse({'status': 'success'}, safe=False)
 def transfer(request):
     request_unicode = request.body.decode('utf-8')
     request_body = json.loads(request_unicode)
@@ -93,6 +100,7 @@ def transfer(request):
         user.save()
         request.user.balance -= decimal.Decimal(request_body['amount'])
         request.user.save()
+        Transaction.objects.create(from_user=request.user,to_user=user,amount=decimal.Decimal(request_body['amount']))
         return JsonResponse({'status': 'success'}, safe=False)
     else:
         return JsonResponse({'status': 'user not found'}, safe=False)
@@ -102,6 +110,6 @@ def profile_index(request):
         profile_index = 'active'
         pageTitle = 'Личный кабинет | UGS'
         pageDescription = 'Сервис создан для игроков, которые любят и будут рисковать. UGS - финансовая подушка для игроков, которые привыкли играть на крупные суммы'
-
+        allTransfer = Transaction.objects.all()
         return render(request, 'pages/lk.html', locals())
 

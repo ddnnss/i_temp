@@ -8,6 +8,7 @@ urlpatterns = [
    path('login_req/', views.login_req, name='login_req'),
    path('profile/', views.profile_index, name='profile_index'),
    path('transfer/', views.transfer, name='transfer'),
+   path('add_money/', views.add_money, name='add_money'),
 
 
 

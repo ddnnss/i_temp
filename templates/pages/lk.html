@@ -69,7 +69,7 @@
                     <div class="lk-wrapper">
                         <div class="lk-menu">
                             <ul class="lk-menu__wrapper">
-                                <li @click="current_tab = 1" class="lk-menu__item wa">Wallet</li>
+                                <li @click="current_tab = 1,wallet_not_action=true,wallet_action_up=false,wallet_action_sell=false,wallet_action_transfer=false" class="lk-menu__item wa">Wallet</li>
                                 <li @click="current_tab = 2" class="lk-menu__item tr">Transactions</li>
                                 <li @click="current_tab = 3" class="lk-menu__item he">Help</li>
                                 <li @click="current_tab = 4" class="lk-menu__item se">Settings</li>
@@ -108,14 +108,14 @@
                                     <form action="">
                                     <div class="form-block mb-30">
                                         <p class="mb-10">Пополнить кошелек IToken на</p>
-                                        <input type="text" class="form-control " placeholder="">
+                                        <input type="number" step=".01" min="0" class="form-control " v-model="add_amount" placeholder="рублей">
                                     </div>
                                     <div class="form-block mb-30">
-                                        <p class="mb-10">Будет переведено с кошелька Ethereum</p>
-                                        <input type="text" class="form-control" placeholder="">
+                                        <p class="mb-10">Будет начислено</p>
+                                        <input type="text" class="form-control" readonly v-model="add_total_amount" placeholder="">
                                     </div>
 
-                                    <a class="btn">пополнить кошелек</a>
+                                    <a href="" @click.prevent="addMoney" :class="{disabled:add_amount <= 0}" class="btn">пополнить кошелек</a>
                                 </form>
                                 </div>
                                 <div v-if="wallet_action_sell" class="">
@@ -159,25 +159,21 @@
                                 <div class="lk-tab__content">
                                     <div class="lk-table">
                                         <div class="flex-block lk-table__head">
-                                            <p class="lk-table__head-label text upper">id</p>
-                                            <p class="lk-table__head-label text">Investment</p>
-                                            <p class="lk-table__head-label text">Bonus</p>
+                                            <p class="lk-table__head-label text upper">Date</p>
+                                            <p class="lk-table__head-label text">Wallet</p>
+                                            <p class="lk-table__head-label text">Amount</p>
+
+
+
                                         </div>
+                                        {% for t in allTransfer %}
                                         <div class="flex-block lk-table__row">
-                                            <p class="lk-table__head-label text color-w">Value</p>
-                                            <p class="lk-table__head-label text color-w">Value</p>
-                                            <p class="lk-table__head-label text color-w">Value</p>
+                                            <p class="lk-table__head-label text color-w">{{ t.created_at | date }}<br>{{ t.created_at | time }}</p>
+                                            <p class="lk-table__head-label text color-w">{{ t.to_user.wallet | truncatechars:10 }}</p>
+                                            <p class="lk-table__head-label text color-w">{{ t.amount }}</p>
+
                                         </div>
-                                        <div class="flex-block lk-table__row">
-                                            <p class="lk-table__head-label text color-w">Value</p>
-                                            <p class="lk-table__head-label text color-w">Value</p>
-                                            <p class="lk-table__head-label text color-w">Value</p>
-                                        </div>
-                                        <div class="flex-block lk-table__row">
-                                            <p class="lk-table__head-label text color-w">Value</p>
-                                            <p class="lk-table__head-label text color-w">Value</p>
-                                            <p class="lk-table__head-label text color-w">Value</p>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div><!--lk-Transactions-->
@@ -198,6 +194,7 @@
                                 <div class="panel">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 </div>
+
                             </div><!--lk-Help-->
                             <div v-if="current_tab === 4" class="mb-50">
                                 <div class="mb-50"></div>
@@ -205,7 +202,7 @@
                                 <form action="">
                                     <div class="form-block mb-30">
                                         <p class="mb-10">Email</p>
-                                        <input type="text" class="form-control " placeholder="Enter your email">
+                                        <input type="text" class="form-control " placeholder="Enter your email" value="{{ request.user.email }}">
                                     </div>
                                     <div class="form-block mb-30">
                                         <p class="mb-10">Password</p>
@@ -213,7 +210,7 @@
                                     </div>
                                     <div class="form-block mb-50">
                                         <p class="mb-10">Wallet address</p>
-                                        <input type="text" class="form-control wallet" placeholder="Enter your wallet address">
+                                        <input type="text" class="form-control wallet" readonly value="{{ request.user.wallet }}" placeholder="Enter your wallet address">
                                     </div>
                                     <a class="btn">save</a>
                                 </form>
@@ -246,9 +243,19 @@
             wallet_action_transfer:false,
             tr_amount:0,
             tr_wallet:'',
+            add_amount:0,
+            add_total_amount:0
 
         },
         watch:{
+            current_tab(val){
+                console.log(val)
+                val === 3 ? accc() : console.log('not')
+            },
+            add_amount(val){
+                console.log(this.add_amount)
+                this.add_total_amount = (this.add_amount /5).toFixed(2)
+            }
 
         },
         mounted: function () {
@@ -262,6 +269,30 @@
         },
 
         methods: {
+            addMoney(){
+                  let body = {
+
+                'amount':this.add_total_amount
+            }
+            fetch('{% url 'add_money' %}', {
+                method: 'post',
+                body: JSON.stringify(body),
+                headers: { "X-CSRFToken": '{{ csrf_token }}' },
+                credentials: 'same-origin'
+            }).then(res=>res.json())
+                .then(res => {
+                    console.log(res)
+                    if(res['status']==='success'){
+                        location.reload();
+                    }
+                    else{
+                        this.login_error = true
+                       location.reload();
+                    }
+                })
+
+            },
+
             transferSend(){
                 let body = {
                 'id':this.tr_wallet,
@@ -276,11 +307,11 @@
                 .then(res => {
                     console.log(res)
                     if(res['status']==='success'){
-                        //location.reload();
+                        location.reload();
                     }
                     else{
                         this.login_error = true
-                       //  location.reload();
+                        location.reload();
                     }
                 })
             }
@@ -289,8 +320,18 @@
         }
     })
 </script>
+
+
      <script>
-            var acc = document.getElementsByClassName("accordion");
+     function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+     function accc() {
+         console.log('ddf')
+         sleep(500).then(() => {
+
+           var acc = document.getElementsByClassName("accordion");
             var i;
 
             for (i = 0; i < acc.length; i++) {
@@ -309,5 +350,13 @@
                     }
                 });
             }
+
+
+});
+
+
+
+     }
+
         </script>
 {% endblock %}
