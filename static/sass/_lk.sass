@@ -1,0 +1,148 @@
+.lk
+  &-button
+    border: 1px solid $color-grey
+    height: 270px
+    width: 30%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    transition: all .2s linear
+    &:hover
+      border-color: $color-text-b
+  &-wrapper
+    display: flex
+    justify-content: space-between
+  &-menu
+    flex-basis: 21%
+    &__wrapper
+      border: 1px solid $color-grey
+    &__item
+      position: relative
+      padding: 30px 20px 30px 60px
+      cursor: pointer
+      border-bottom: 1px solid $color-grey
+      transition: all .2s linear
+      &:last-child
+        border-bottom: none
+      &:hover
+        background: $color-text-b
+      &::before
+        position: absolute
+        left: 20px
+      &.wa::before
+        content: url(../images/wallet.png)
+      &.tr::before
+        content: url(../images/co.png)
+      &.he::before
+        content: url(../images/wallet.png)
+      &.se::before
+        content: url(../images/wallet.png)
+  &-content
+    flex-basis: 74%
+
+@media (max-width: 960px)
+ .lk
+    &-menu
+      flex-basis: 23%
+    &-content
+      flex-basis: 70%
+    &-button
+      height: 190px
+
+@media (max-width: 840px)
+  .lk
+    &-menu
+      display: none
+    &-content
+      flex-basis: 100%
+    &-button
+      height: 90px
+      width: 90px
+      img
+        width: 26px
+        height: 26px
+        margin-bottom: 10px !important
+
+.lk-tabs
+  display: flex
+  margin-bottom: 60px
+
+  &__item
+    text-align: center
+    flex-basis: 50%
+    border-bottom: 1px solid $color-grey
+    padding-bottom: 25px
+    cursor: pointer
+    &.tabActive
+      border-bottom: 1px solid $color-text-b
+
+.lk-table
+  &__head
+    background: $color-grey
+    padding: 15px  20px
+    &-label
+      flex-grow: 1
+  &__row
+    border-bottom: 1px solid $color-grey
+    padding: 15px  20px
+    &-label
+      flex-grow: 1
+
+      
+.accordion 
+  background: transparent
+  cursor: pointer
+  padding: 25px 0
+  width: 100%
+  border: none
+  border-top: 1px solid $color-grey
+  text-align: left
+  outline: none
+  font-size: 15px
+  transition: 0.4s
+
+.active, .accordion:hover 
+  background: transparent
+
+.accordion:after 
+  content: url(../images/panel_p.png)
+  float: right
+  margin-left: 5px
+
+.active:after 
+ content: url(../images/panel_m.png)
+
+.panel 
+  padding: 0
+  max-height: 0
+  overflow: hidden
+  transition: all 0.2s linear
+
+
+.form-control
+  border: none
+  border: 1px solid $color-grey
+  background: transparent
+  width: 300px
+  max-width: 300px
+  padding: 20px 25px
+  box-sizing: border-box
+  font-size: 12px
+  color: $color-text-w
+  transition: all .2s linear
+  &.wallet
+    width: 600px
+    max-width: 600px
+  &:focus
+    outline: none
+    border-color: $color-text-b
+
+@media (max-width: 840px)
+  .form-control
+
+    width: 100%
+    &.wallet
+      width: 100%
+

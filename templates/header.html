@@ -1,0 +1,133 @@
+{% load static %}
+{% if index %}
+  <header class="header mb-250">
+        <div class="header-menu flex-block">
+            <div class="header-menu__logo">
+                <img src="{% static 'images/logo.png' %}" alt="">
+            </div>
+            <div class="header-menu__nav flex-block">
+                <a class="text px14 color-w" href="#">White paper</a>
+                <a class="text px14 color-w" href="#">FAQ</a>
+                <a class="text px14 color-w" href="#">Контакты</a>
+            </div>
+            <div class="header-menu__nav-small flex-block">
+                <a class="text px14 color-w lsp upper bold" href="#">РУ</a>
+                {% if not request.user.is_authenticated %}
+                <a href="" class="text px14 color-w lsp upper bold" @click.prevent="modal_login=true">Войти</a>
+                    {% else %}
+                    <a class="text px14 color-w lsp upper bold" href="{% url 'profile_index' %}">ЛК</a>
+                    {% endif %}
+
+                </div>
+        {% if not request.user.is_authenticated %}
+            <a href="" @click.prevent="modal_register=true" class="reg-btn btn text px14 color-w">Зарегистрироваться</a>
+            {% else %}
+            <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w">Выход</a>
+            {% endif %}
+            <div class="mobile-toggle "></div>
+            <!--toggleActive-->
+        </div>
+        <!--mobileMenuActive-->
+        <div class="mobile-menu ">
+            <ul class="mb-25">
+                <li class="mobile-menu__item">White Paper</li>
+                <li class="mobile-menu__item">FAQ</li>
+                <li class="mobile-menu__item">Контакты</li>
+                <li class="mobile-menu__item">Язык: RU</li>
+            </ul>
+            <div class="mobile-menu__btns">
+
+                <span @click.prevent="modal_register=true" class="btn mb-25">зарегистрироваться</span>
+                <span @click.prevent="modal_login=true" class="btn btn-outline">войти</span>
+            </div>
+
+        </div>
+
+        <div class="tech-slideshow mb-120">
+            <div class="mover-1">
+                 <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__up">1.4%</p>
+            </div>
+
+            <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__down">1.4%</p>
+            </div>
+            <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__up">1.4%</p>
+            </div>
+            <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__up">1.4%</p>
+            </div>
+            <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__up">1.4%</p>
+            </div>
+            <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__up">1.4%</p>
+            </div>
+            <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__up">1.4%</p>
+            </div>
+            <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__up">1.4%</p>
+            </div>
+            <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__up">1.4%</p>
+            </div>
+            <div class="coin-block">
+                <p class="text px12 upper color-w">BTC</p>
+                <p class="text px12 upper color-g">$11,873.12</p>
+                <p class="text px12 coin-block__up">1.4%</p>
+            </div>
+            </div>
+
+
+        </div>
+        <div class="header-middle">
+            <h1 class="heading h1 text color-w mb-35">Делайте P2P переводы в 10 раз быстрее</h1>
+            <p class="mb-50">iToken успешно внедрил разработку ERC20, которая позволяет проводить P2P-транзакции в Ethereum в 10 раз быстрее</p>
+            <a href="" class="btn center">попробовать</a>
+
+        </div>
+    </header>
+    {% else %}
+       <div class="container">
+        <div class="header-menu flex-block">
+            <div class="header-menu__logo">
+                <img src="{% static 'images/logo.png' %}" alt="">
+            </div>
+
+            <div class="header-menu__nav-small flex-block">
+                <a class="text px14 color-w lsp upper bold" href="#">РУ</a>
+                <div class="flex-block">
+                    <img class="img" src="http://placehold.it/30" alt="">
+                    <a class="text px14 color-w lsp upper bold" href="#">Login</a>
+                </div>
+                <div class="flex-block">
+                    <img class="img" src="http://placehold.it/30" alt="">
+                    <p class="text px14 color-w lsp upper bold" >15 TK</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+     {% endif %}

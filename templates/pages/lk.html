@@ -1,0 +1,313 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+    <div id="app" class="app">
+
+
+        <div class="tech-slideshow mb-120">
+            <div class="mover-1">
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__down">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="main">
+            <section class="lk">
+                <div class="container">
+                    <div class="lk-wrapper">
+                        <div class="lk-menu">
+                            <ul class="lk-menu__wrapper">
+                                <li @click="current_tab = 1" class="lk-menu__item wa">Wallet</li>
+                                <li @click="current_tab = 2" class="lk-menu__item tr">Transactions</li>
+                                <li @click="current_tab = 3" class="lk-menu__item he">Help</li>
+                                <li @click="current_tab = 4" class="lk-menu__item se">Settings</li>
+                            </ul>
+                        </div>
+                        <div class="lk-content">
+                            <div v-if="current_tab === 1" class="mb-50">
+                                <p class="heading h3 text color-w mb-30">Wallet</p>
+                                <div class="flex-block mb-50">
+                                    <div class="">
+                                        <p class="mb-15">Баланс</p>
+                                        <p class="heading h3">{{ request.user.balance }} TKN</p>
+                                    </div>
+                                    <div class="fb-60">
+                                        <p class="mb-15">ID кошелька</p>
+                                        <p class="">{{ request.user.wallet }}</p>
+                                    </div>
+                                </div>
+                                <div v-if="wallet_not_action" class="flex-block">
+                                    <div @click="wallet_not_action=false,wallet_action_up=true" class="lk-button">
+                                        <img class="mb-25" src="{% static 'images/plus.png' %}" alt="">
+                                        <p class="heading h5 text color-w">Пополнить</p>
+                                    </div>
+                                    <div @click="wallet_not_action=false,wallet_action_sell=true" class="lk-button">
+                                        <img class="mb-25" src="{% static 'images/lk-cart.png' %}" alt="">
+                                        <p class="heading h5 text color-w">Продать</p>
+                                    </div>
+                                    <div @click="wallet_not_action=false,wallet_action_transfer=true" class="lk-button">
+                                        <img class="mb-25" src="{% static 'images/lk-arr.png' %}" alt="">
+                                        <p class="heading h5 text color-w">Перевести</p>
+                                    </div>
+                                </div>
+
+                                <div v-if="wallet_action_up" class="">
+                                        <p class="heading h3 text color-w mb-30">Пополнить</p>
+                                    <form action="">
+                                    <div class="form-block mb-30">
+                                        <p class="mb-10">Пополнить кошелек IToken на</p>
+                                        <input type="text" class="form-control " placeholder="">
+                                    </div>
+                                    <div class="form-block mb-30">
+                                        <p class="mb-10">Будет переведено с кошелька Ethereum</p>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+
+                                    <a class="btn">пополнить кошелек</a>
+                                </form>
+                                </div>
+                                <div v-if="wallet_action_sell" class="">
+                                    <p class="heading h3 text color-w mb-30">Продать</p>
+                                    <form action="">
+                                    <div class="form-block mb-30">
+                                        <p class="mb-10">Кол-во IToken на продажу</p>
+                                        <input type="text" class="form-control " placeholder="">
+                                    </div>
+                                    <div class="form-block mb-30">
+                                        <p class="mb-10">Будет переведено на кошелек Ethereum</p>
+                                        <input type="text" class="form-control" placeholder="">
+                                    </div>
+
+                                    <a class="btn">продать</a>
+                                </form>
+                                </div>
+                                <div v-if="wallet_action_transfer" class="">
+                                    <p class="heading h3 text color-w mb-30">Перевод</p>
+
+                                    <div class="form-block mb-30">
+                                        <p class="mb-10">ID кошелька</p>
+                                        <input type="text" class="form-control " v-model="tr_wallet" placeholder="">
+                                    </div>
+                                    <div class="form-block mb-30">
+                                        <p class="mb-10">Сумма перевода</p>
+                                        <input type="number" step=".01" class="form-control"  v-model="tr_amount"  placeholder="">
+                                    </div>
+
+                                    <a href="" @click.prevent="transferSend" class="btn">перевести</a>
+
+                                </div>
+                            </div><!--lk-Wallet-->
+                            <div v-if="current_tab === 2" class="mb-50">
+                                <div class="mb-50"></div>
+                                <p class="heading h3 text color-w mb-30">Transactions</p>
+                                <div class="lk-tabs">
+                                    <div class="lk-tabs__item tabActive"><p class="heading h4 text color-w">Transfer</p></div>
+                                    <div class="lk-tabs__item "><p class="heading h4 text color-w">Token Withdrawal</p></div>
+                                </div>
+                                <div class="lk-tab__content">
+                                    <div class="lk-table">
+                                        <div class="flex-block lk-table__head">
+                                            <p class="lk-table__head-label text upper">id</p>
+                                            <p class="lk-table__head-label text">Investment</p>
+                                            <p class="lk-table__head-label text">Bonus</p>
+                                        </div>
+                                        <div class="flex-block lk-table__row">
+                                            <p class="lk-table__head-label text color-w">Value</p>
+                                            <p class="lk-table__head-label text color-w">Value</p>
+                                            <p class="lk-table__head-label text color-w">Value</p>
+                                        </div>
+                                        <div class="flex-block lk-table__row">
+                                            <p class="lk-table__head-label text color-w">Value</p>
+                                            <p class="lk-table__head-label text color-w">Value</p>
+                                            <p class="lk-table__head-label text color-w">Value</p>
+                                        </div>
+                                        <div class="flex-block lk-table__row">
+                                            <p class="lk-table__head-label text color-w">Value</p>
+                                            <p class="lk-table__head-label text color-w">Value</p>
+                                            <p class="lk-table__head-label text color-w">Value</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--lk-Transactions-->
+                            <div v-if="current_tab === 3" class="mb-50">
+                                <div class="mb-50"></div>
+                                <p class="heading h3 text color-w mb-30">Help</p>
+                                <button class="accordion heading h5">Как купить iToken?</button>
+                                <div class="panel">
+                                    <p>Приобрести наш токен можно через наш кошелек, либо через Metamask / MyEtherWallet. Цена комиссии при покупке через наш кошелек заметно ниже</p>
+                                </div>
+
+                                <button class="accordion heading h5">Где можно отследить транзакции iToken?</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>
+
+                                <button class="accordion heading h5">Где можно отследить транзакции iToken?</button>
+                                <div class="panel">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                </div>
+                            </div><!--lk-Help-->
+                            <div v-if="current_tab === 4" class="mb-50">
+                                <div class="mb-50"></div>
+                                <p class="heading h3 text color-w mb-30">Settings</p>
+                                <form action="">
+                                    <div class="form-block mb-30">
+                                        <p class="mb-10">Email</p>
+                                        <input type="text" class="form-control " placeholder="Enter your email">
+                                    </div>
+                                    <div class="form-block mb-30">
+                                        <p class="mb-10">Password</p>
+                                        <input type="text" class="form-control" placeholder="Enter new password">
+                                    </div>
+                                    <div class="form-block mb-50">
+                                        <p class="mb-10">Wallet address</p>
+                                        <input type="text" class="form-control wallet" placeholder="Enter your wallet address">
+                                    </div>
+                                    <a class="btn">save</a>
+                                </form>
+                            </div><!--lk-Settings-->
+                        </div> <!--lk-content-->
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+
+
+
+    </div>
+{% endblock %}
+{% block js %}
+    {{ block.super }}
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    var app = new Vue({
+        el: '#app',
+
+        data: {
+          current_tab:1,
+            wallet_not_action:true,
+            wallet_action_up:false,
+            wallet_action_sell:false,
+            wallet_action_transfer:false,
+            tr_amount:0,
+            tr_wallet:'',
+
+        },
+        watch:{
+
+        },
+        mounted: function () {
+            this.$nextTick(function () {
+
+
+            })
+        },
+        computed: {
+
+        },
+
+        methods: {
+            transferSend(){
+                let body = {
+                'id':this.tr_wallet,
+                'amount':this.tr_amount
+            }
+            fetch('{% url 'transfer' %}', {
+                method: 'post',
+                body: JSON.stringify(body),
+                headers: { "X-CSRFToken": '{{ csrf_token }}' },
+                credentials: 'same-origin'
+            }).then(res=>res.json())
+                .then(res => {
+                    console.log(res)
+                    if(res['status']==='success'){
+                        //location.reload();
+                    }
+                    else{
+                        this.login_error = true
+                       //  location.reload();
+                    }
+                })
+            }
+
+
+        }
+    })
+</script>
+     <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+
+                        panel.style.maxHeight = null;
+                        panel.style.padding = '0'
+
+                    } else {
+
+                        panel.style.maxHeight = panel.scrollHeight + 25 + "px";
+                        panel.style.padding = '0 0 25px 0'
+                    }
+                });
+            }
+        </script>
+{% endblock %}

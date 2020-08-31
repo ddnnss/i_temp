@@ -1,0 +1,76 @@
+{% load static %}
+  <footer class="footer">
+        <div class="container">
+            <div class="footer-mobile mb-50">
+                    <img src="{% static 'images/logo.png' %}" alt="">
+                <ul class="mb-50">
+                     <li class="mobile-menu__item">White Paper</li>
+                <li class="mobile-menu__item">FAQ</li>
+                <li class="mobile-menu__item">Контакты</li>
+                </ul>
+                {% if not request.user.is_authenticated %}
+                 <a @click.prevent="modal_register=true" href="" class=" btn text px14 color-w mb-25">Зарегистрироваться</a>
+                 <a href="" @click.prevent="modal_login=true" class=" btn btn-outline text px14 color-w mb-50">Войти</a>
+                {% else %}
+                   <a  href="{% url 'profile_index' %}" class=" btn text px14 color-w mb-25">Личный кабинет</a>
+                 <a href="{% url 'logout_page' %}"  class=" btn btn-outline text px14 color-w mb-50">Выход</a>
+                {% endif %}
+                <p class="mb-15"><a class="text px24 color-w" href="">hello@itoken.com</a></p>
+                  <ul>
+                        <li class="mb-10"><a href="">Telegram</a></li>
+                        <li class="mb-10"><a href="">Instagram</a></li>
+                        <li class="mb-10"><a href="">Twitter</a></li>
+                        <li><a href="">Facebook</a></li>
+                    </ul>
+              </div>
+          <div class="header-menu flex-block footer-menu">
+
+            <div class="header-menu__logo">
+                <img src="{% static 'images/logo.png' %}" alt="">
+            </div>
+            <div class="header-menu__nav flex-block">
+                <a class="text px14 color-w" href="#">White paper</a>
+                <a class="text px14 color-w" href="#">FAQ</a>
+                <a class="text px14 color-w" href="#">Контакты</a>
+            </div>
+            <div class="header-menu__nav-small flex-block">
+{% if not request.user.is_authenticated %}
+                <a class="text px14 color-w lsp upper bold" @click.prevent="modal_login=true" href="#">Войти</a>
+{% else %}
+      <a class="text px14 color-w lsp upper bold"  href="{% url 'profile_index' %}">ЛК</a>
+                {% endif %}
+            </div>
+              {% if not request.user.is_authenticated %}
+            <a href="" @click.prevent="modal_register=true" class="reg-btn btn text px14 color-w">Зарегистрироваться</a>
+          {% else %}
+                   <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w">Выход</a>
+                {% endif %}
+        </div>
+
+            <div class="footer-middle mb-100">
+                <div class="footer-middle__left">
+                    <ul>
+                        <li><a href="">Instagram</a></li>
+                        <li><a href="">Twitter</a></li>
+                        <li><a href="">Facebook</a></li>
+                    </ul>
+                </div>
+                <div class="footer-middle__right">
+                    <p><a class="text px24 color-w" href="">hello@itoken.com</a></p>
+                    <p>telegram</p>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="flex-block flex-center">
+                  <p style="opacity: .25" class="text px12 color-w">iToken. 2020. Все права защищены</p>
+                    <p style="opacity: .25" class="text px12 color-w"><a href="">Политика конфиденциальности</a></p>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>

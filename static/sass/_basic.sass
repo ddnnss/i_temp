@@ -1,0 +1,358 @@
+$color-bg: #000000
+$color-border: #EEEEEE
+$color-text-w: #EFF0F4
+$color-text-b: #3FC4FF
+$color-grey: #2F2F2F
+$color-red: #FF463F
+
+
+
+
+body
+  background: $color-bg
+  font: 16px 'Manrope',sans-serif
+  color: $color-text-w
+  font-weight: 400
+  line-height: 150%
+a
+  color: inherit
+@media (max-width: 840px)
+  body
+    font-size: 14px !important
+.heading
+  color: $color-text-b
+  &.h1
+    font-size: 65px
+    font-weight: 700
+    line-height: 89px
+  &.h2
+    font-size: 55px
+    font-weight: 400
+    line-height: 75px
+  &.h3
+    font-size: 35px
+    font-weight: 400
+  &.h4
+    font-size: 22px
+    font-weight: 700
+  &.h5
+    font-size: 16px
+    font-weight: 600
+
+.text
+  color: $color-text-b
+  &.lsp
+    letter-spacing: 0.05em
+  &.upper
+    text-transform: uppercase
+  &.bold
+    font-weight: 700
+  &.color-w
+    color: $color-text-w
+  &.color-g
+    color: #8F8F91
+  &.color-r
+    color: $color-red
+  &.px24
+    font-size: 24px
+  &.px14
+    font-size: 14px
+  &.px12
+    font-size: 12px
+.container
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 30px
+
+@media (max-width: 840px)
+  .container
+    padding: 0 10px
+  .heading
+    color: $color-text-b
+  &.h1
+    font-size: 35px !important
+    font-weight: 700
+    line-height: 48px !important
+  &.h2
+    font-size: 30px !important
+    font-weight: 400
+    line-height: 41px !important
+  &.h3
+    font-size: 22px !important
+    font-weight: 400
+  &.h4
+    font-size: 16px !important
+    font-weight: 700
+  &.h5
+    font-size: 12px !important
+    font-weight: 600
+
+  .text
+    color: $color-text-b
+
+  &.lsp
+    letter-spacing: 0.05em
+  &.upper
+    text-transform: uppercase
+  &.bold
+    font-weight: 700
+  &.color-w
+    color: $color-text-w
+  &.color-g
+    color: #8F8F91
+  &.color-r
+    color: $color-red
+  &.px24
+    font-size: 24px
+  &.px14
+    font-size: 14px
+  &.px12
+    font-size: 12px
+  &.px10
+    font-size: 10px !important
+
+
+
+.btn
+  background: $color-text-b
+  font-size: 14px
+  text-transform: uppercase
+  letter-spacing: 0.05em
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 60px
+  box-sizing: border-box
+  color: $color-text-w
+  max-width: 250px
+  transition: all .2s linear
+  flex-basis: 250px
+  &:hover
+    background: $color-text-w
+    color: $color-text-b
+  &.btn-outline
+    background: transparent
+    border: 1px solid $color-text-b
+    &:hover
+      border: 1px solid $color-text-w
+      color: $color-text-w
+.container
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 30px
+.mb-250
+  margin-bottom: 250px
+.mb-120
+  margin-bottom: 120px
+.mb-100
+  margin-bottom: 100px
+.mb-75
+  margin-bottom: 75px !important
+.mb-50
+  margin-bottom: 50px !important
+
+.mb-35
+  margin-bottom: 35px
+.mb-30
+  margin-bottom: 30px
+
+.mb-25
+  margin-bottom: 25px !important
+.mb-15
+  margin-bottom: 15px !important
+.mb-10
+  margin-bottom: 10px !important
+.fb-60
+  flex-basis: 60%
+
+.m-w450
+  max-width: 450px
+  margin: 0 auto
+
+.m-w600
+  max-width: 600px
+  margin: 0 auto
+@media (max-width: 840px)
+ .mb-250
+    margin-bottom: 100px !important
+ .mb-35
+    margin-bottom: 25px !important
+ .mb-100
+    margin-bottom: 50px !important
+.text-center
+  text-align: center
+.center
+  margin: 0 auto
+.flex-block
+  display: flex
+  align-items: center
+  justify-content: space-between
+  & .img
+    margin-right: 10px
+    border-radius: 50%
+    width: 30px
+    height: 30px
+    object-fit: cover
+
+@media (max-width: 840px)
+  .flex-block
+    flex-wrap: wrap
+
+
+.coin-block
+  background: $color-grey
+  border-radius: 10px
+  display: flex
+  padding: 0px 10px
+
+  p
+    margin-right: 10px
+    &:last-child
+      margin-right: 0
+
+  &__down
+
+    color: $color-red
+    &::before
+      content: '-'
+      color: $color-red
+
+    &::after
+      position: relative
+      top: 1px
+      margin-left: 5px
+      content: url(../images/down_arr.png)
+  &__up
+    color: $color-text-b
+    &::before
+      content: '+'
+      color: $color-text-b
+
+    &::after
+      position: relative
+      top: 1px
+      margin-left: 5px
+      content: url(../images/up_arr.png)
+
+.glide
+  display: none
+.counter 
+  display: inline-flex
+  cursor: pointer
+  width: 300px
+  height: 300px
+  max-width: 100%
+  position: relative
+  justify-content: center
+  align-items: center
+  font-size: calc(1em + 1vmin)
+  transition: height .2s ease-in-out
+  background: transparent
+  border-radius: 50%
+  box-shadow: 0px 1px 10px 2px rgba(0,0,0,0.2)
+  margin: 1em 0
+
+.percentage 
+  position: absolute
+  text-align: center
+  top: 50%
+  left: 0
+  right: 0
+  vertical-align: middle
+  transform: translate3d(0,-50%,0)
+
+@media (max-width: 840px)
+  .counter
+    width: 130px
+    height: 130px
+
+.circle-block
+  max-width: 850px
+  margin: 0 auto
+
+
+.where-to-buy
+  display: flex
+  justify-content: space-between
+  &__item
+    position: relative
+    padding: 60px
+    text-align: center
+    width: 370px
+    height: 370px
+    border-top: 1px solid $color-grey
+    border-left: 1px solid $color-grey
+    &.best-price::before
+      position: absolute
+      content: 'Цена ниже'
+      background: $color-text-w
+      color: #3C3C3C
+      font-size: 12px
+
+      width: 100px
+      top: -10px
+      left: 0
+      right: 0
+      margin: 0 auto
+
+@media (max-width: 960px)
+  .where-to-buy
+    &__item
+      width: 250px
+      height: 250px
+      border-left: none
+    & .btn
+      width: 250px
+      position: absolute
+      left: 0
+
+@media (max-width: 840px)
+  .flex-center
+    justify-content: center
+  .circle-block
+    flex-wrap: nowrap !important
+  .glide
+    display: block
+    & .btn
+      position: relative
+      width: 100%
+      max-width: unset
+
+  .where-to-buy
+    display: none
+    &__item
+      padding: 60px 0 0 0
+      //width: 250px !important
+      height: 100%
+      margin-top: 10px
+
+
+.footer
+  background: $color-grey
+  &-middle
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    &__left
+      flex-basis: 50%
+    &__right
+      flex-basis: 50%
+  &-bottom
+    padding: 25px 0
+    border-top: 1px solid rgba(239, 240, 244, 0.11)
+.footer-mobile
+  display: none
+@media (max-width: 840px)
+  .footer-mobile
+    display: block
+    padding-top: 20px
+    & .mobile-menu__item
+      border-color: rgba(239, 240, 244, 0.1)
+    & .btn
+      width: 100%
+      max-width: unset
+  .footer
+    &-middle
+      display: none
+    &-menu
+      display: none
