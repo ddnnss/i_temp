@@ -24,11 +24,11 @@
             {% else %}
             <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w">Выход</a>
             {% endif %}
-            <div class="mobile-toggle "></div>
+            <div style="cursor: pointer" @click="mobile_menu_active===true?mobile_menu_active=false:mobile_menu_active=true" :class="{toggleActive: mobile_menu_active}" class="mobile-toggle "></div>
             <!--toggleActive-->
         </div>
         <!--mobileMenuActive-->
-        <div class="mobile-menu ">
+        <div :class="{mobileMenuActive: mobile_menu_active}" class="mobile-menu ">
             <ul class="mb-25">
                 <li class="mobile-menu__item">White Paper</li>
                 <li class="mobile-menu__item">FAQ</li>
@@ -103,7 +103,7 @@
         <div class="header-middle">
             <h1 class="heading h1 text color-w mb-35">Делайте P2P переводы в 10 раз быстрее</h1>
             <p class="mb-50">iToken успешно внедрил разработку ERC20, которая позволяет проводить P2P-транзакции в Ethereum в 10 раз быстрее</p>
-            <a href="" class="btn center">попробовать</a>
+            <a href="" @click.prevent="modal_register=true" class="btn center">попробовать</a>
 
         </div>
     </header>

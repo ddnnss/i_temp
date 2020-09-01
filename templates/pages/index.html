@@ -31,7 +31,7 @@
 
             <p class="m-w600 text-center mb-50">Сервис позволяет отследить абсолютно всю информацию в сети Ethereum. Благодаря технологии блокчейн все транзакции остаются прозрачными, а сеть Ethereum, на базе блокчейна которой работает iToken, в свою очередь, зарекомендовала себя как надежный инструмент для реализации проектов.</p>
 
-                <a href="" class="btn btn-outline center">попробовать</a>
+                <a href="" @click.prevent="modal_register=true" class="btn btn-outline center">попробовать</a>
 
 
          </section>
@@ -165,6 +165,7 @@
         el: '#app',
 
         data: {
+            mobile_menu_active:false,
             modal_login:false,
             login_error:false,
             login_email:'',
