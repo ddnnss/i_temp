@@ -4,6 +4,7 @@
     <div id="app" class="app">
 
 
+
         <div class="tech-slideshow mb-120">
             <div class="mover-1">
                 <div class="coin-block">
@@ -61,7 +62,7 @@
 
 
         </div>
-
+<div class="mb-35"></div>
 
         <div class="main">
             <section class="lk">
@@ -150,7 +151,6 @@
                                 </div>
                             </div><!--lk-Wallet-->
                             <div v-if="current_tab === 2" class="mb-50">
-                                <div class="mb-50"></div>
                                 <p class="heading h3 text color-w mb-30">Transactions</p>
                                 <div class="lk-tabs">
                                     <div class="lk-tabs__item tabActive"><p class="heading h4 text color-w">Transfer</p></div>
@@ -177,8 +177,7 @@
                                     </div>
                                 </div>
                             </div><!--lk-Transactions-->
-                            <div v-if="current_tab === 3" class="mb-50">
-                                <div class="mb-50"></div>
+                            <div v-if="current_tab === 3" class="mb-120">
                                 <p class="heading h3 text color-w mb-30">Help</p>
                                 <button class="accordion heading h5">Как купить iToken?</button>
                                 <div class="panel">
@@ -197,16 +196,19 @@
 
                             </div><!--lk-Help-->
                             <div v-if="current_tab === 4" class="mb-50">
-                                <div class="mb-50"></div>
                                 <p class="heading h3 text color-w mb-30">Settings</p>
-                                <form action="">
+                                <form action="" method="post">{% csrf_token %}
+                                    <div class="form-block mb-30">
+                                        <p class="mb-10">Username</p>
+                                        <input type="text" class="form-control " placeholder="Enter your username" name="username" value="{{ request.user.username }}">
+                                    </div>
                                     <div class="form-block mb-30">
                                         <p class="mb-10">Email</p>
-                                        <input type="text" class="form-control " placeholder="Enter your email" value="{{ request.user.email }}">
+                                        <input type="text" class="form-control " placeholder="Enter your email" name="email" value="{{ request.user.email }}">
                                     </div>
                                     <div class="form-block mb-30">
                                         <p class="mb-10">Password</p>
-                                        <input type="text" class="form-control" placeholder="Enter new password">
+                                        <input type="text" class="form-control" name="password" placeholder="Enter new password">
                                     </div>
                                     <div class="form-block mb-50">
                                         <p class="mb-10">Wallet address</p>
@@ -237,6 +239,7 @@
 
         data: {
           current_tab:1,
+            mobile_menu_active:false,
             wallet_not_action:true,
             wallet_action_up:false,
             wallet_action_sell:false,

@@ -696,6 +696,26 @@ a {
   transition: all .2s linear;
 }
 
+.lk-menu__item.menuItemActive {
+  background: #3FC4FF;
+}
+
+.lk-menu__item.menuItemActive.wa::before {
+  content: url(../images/wa_w.svg);
+}
+
+.lk-menu__item.menuItemActive.tr::before {
+  content: url(../images/tr_w.svg);
+}
+
+.lk-menu__item.menuItemActive.he::before {
+  content: url(../images/he_w.svg);
+}
+
+.lk-menu__item.menuItemActive.se::before {
+  content: url(../images/se_w.svg);
+}
+
 .lk-menu__item:last-child {
   border-bottom: none;
 }
@@ -704,25 +724,41 @@ a {
   background: #3FC4FF;
 }
 
+.lk-menu__item:hover.wa::before {
+  content: url(../images/wa_w.svg);
+}
+
+.lk-menu__item:hover.tr::before {
+  content: url(../images/tr_w.svg);
+}
+
+.lk-menu__item:hover.he::before {
+  content: url(../images/he_w.svg);
+}
+
+.lk-menu__item:hover.se::before {
+  content: url(../images/se_w.svg);
+}
+
 .lk-menu__item::before {
   position: absolute;
   left: 20px;
 }
 
 .lk-menu__item.wa::before {
-  content: url(../images/wallet.png);
+  content: url(../images/wa_b.svg);
 }
 
 .lk-menu__item.tr::before {
-  content: url(../images/co.png);
+  content: url(../images/tr_b.svg);
 }
 
 .lk-menu__item.he::before {
-  content: url(../images/wallet.png);
+  content: url(../images/he_b.svg);
 }
 
 .lk-menu__item.se::before {
-  content: url(../images/wallet.png);
+  content: url(../images/se_b.svg);
 }
 
 .lk-content {

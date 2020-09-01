@@ -1,6 +1,6 @@
 {% load static %}
 {% if index %}
-  <header class="header mb-250">
+    <header class="header mb-250">
         <div class="header-menu flex-block">
             <div class="header-menu__logo">
                 <img src="{% static 'images/logo.png' %}" alt="">
@@ -13,16 +13,16 @@
             <div class="header-menu__nav-small flex-block">
                 <a class="text px14 color-w lsp upper bold" href="#">РУ</a>
                 {% if not request.user.is_authenticated %}
-                <a href="" class="text px14 color-w lsp upper bold" @click.prevent="modal_login=true">Войти</a>
-                    {% else %}
+                    <a href="" class="text px14 color-w lsp upper bold" @click.prevent="modal_login=true">Войти</a>
+                {% else %}
                     <a class="text px14 color-w lsp upper bold" href="{% url 'profile_index' %}">ЛК</a>
-                    {% endif %}
+                {% endif %}
 
-                </div>
-        {% if not request.user.is_authenticated %}
-            <a href="" @click.prevent="modal_register=true" class="reg-btn btn text px14 color-w">Зарегистрироваться</a>
+            </div>
+            {% if not request.user.is_authenticated %}
+                <a href="" @click.prevent="modal_register=true" class="reg-btn btn text px14 color-w">Зарегистрироваться</a>
             {% else %}
-            <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w">Выход</a>
+                <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w">Выход</a>
             {% endif %}
             <div style="cursor: pointer" @click="mobile_menu_active===true?mobile_menu_active=false:mobile_menu_active=true" :class="{toggleActive: mobile_menu_active}" class="mobile-toggle "></div>
             <!--toggleActive-->
@@ -36,66 +36,69 @@
                 <li class="mobile-menu__item">Язык: RU</li>
             </ul>
             <div class="mobile-menu__btns">
-
-                <span @click.prevent="modal_register=true" class="btn mb-25">зарегистрироваться</span>
-                <span @click.prevent="modal_login=true" class="btn btn-outline">войти</span>
+                {% if not request.user.is_authenticated %}
+                    <span @click.prevent="modal_register=true" class="btn mb-25">зарегистрироваться</span>
+                    <span @click.prevent="modal_login=true" class="btn btn-outline">войти</span>
+                {% else %}
+                    <a href="{% url 'logout_page' %}"  class="btn">Выход</a>
+                {% endif %}
             </div>
 
         </div>
 
         <div class="tech-slideshow mb-120">
             <div class="mover-1">
-                 <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__up">1.4%</p>
-            </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
 
-            <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__down">1.4%</p>
-            </div>
-            <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__up">1.4%</p>
-            </div>
-            <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__up">1.4%</p>
-            </div>
-            <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__up">1.4%</p>
-            </div>
-            <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__up">1.4%</p>
-            </div>
-            <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__up">1.4%</p>
-            </div>
-            <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__up">1.4%</p>
-            </div>
-            <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__up">1.4%</p>
-            </div>
-            <div class="coin-block">
-                <p class="text px12 upper color-w">BTC</p>
-                <p class="text px12 upper color-g">$11,873.12</p>
-                <p class="text px12 coin-block__up">1.4%</p>
-            </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__down">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
             </div>
 
 
@@ -107,8 +110,8 @@
 
         </div>
     </header>
-    {% else %}
-       <div class="container">
+{% else %}
+    <div class="container">
         <div class="header-menu flex-block">
             <div class="header-menu__logo">
                 <img src="{% static 'images/logo.png' %}" alt="">
@@ -117,17 +120,34 @@
             <div class="header-menu__nav-small flex-block">
                 <a class="text px14 color-w lsp upper bold" href="#">РУ</a>
                 <div class="flex-block">
-                    <img class="img" src="http://placehold.it/30" alt="">
-                    <a class="text px14 color-w lsp upper bold" href="#">Login</a>
+                    <img class="img" src="{% static 'images/user.svg' %}" alt="">
+                    <a class="text px14 color-w lsp upper bold" href="{% url 'logout_page' %}">{{ request.user.username }}</a>
                 </div>
                 <div class="flex-block">
-                    <img class="img" src="http://placehold.it/30" alt="">
-                    <p class="text px14 color-w lsp upper bold" >15 TK</p>
+                    <img class="img" src="{% static 'images/wa_w.svg' %}" alt="">
+                    <p class="text px14 color-w lsp upper bold" >{{ request.user.balance }} TK</p>
                 </div>
 
             </div>
+            <div style="cursor: pointer" @click="mobile_menu_active===true?mobile_menu_active=false:mobile_menu_active=true" :class="{toggleActive: mobile_menu_active}" class="mobile-toggle "></div>
 
         </div>
+        <div :class="{mobileMenuActive: mobile_menu_active}" class="mobile-menu ">
+            <ul class="mb-25">
+                <li class="mobile-menu__item">White Paper</li>
+                <li class="mobile-menu__item">FAQ</li>
+                <li class="mobile-menu__item">Контакты</li>
+                <li class="mobile-menu__item">Язык: RU</li>
+            </ul>
+            <div class="mobile-menu__btns">
+                {% if not request.user.is_authenticated %}
+                    <span @click.prevent="modal_register=true" class="btn mb-25">зарегистрироваться</span>
+                    <span @click.prevent="modal_login=true" class="btn btn-outline">войти</span>
+                {% else %}
+                    <a href="{% url 'logout_page' %}"  class="btn">Выход</a>
+                {% endif %}
+            </div>
 
+        </div>
     </div>
-     {% endif %}
+{% endif %}
