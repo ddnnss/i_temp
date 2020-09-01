@@ -5,4 +5,5 @@ def index(request):
    return render(request, 'pages/index.html', locals())
 
 def lk(request):
+
    return render(request, 'pages/lk.html', locals())

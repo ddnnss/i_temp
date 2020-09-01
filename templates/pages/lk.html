@@ -197,7 +197,7 @@
                             </div><!--lk-Help-->
                             <div v-if="current_tab === 4" class="mb-50">
                                 <p class="heading h3 text color-w mb-30">Settings</p>
-                                <form action="" method="post">{% csrf_token %}
+                                <form id="profileUpdate" action="" method="post">{% csrf_token %}
                                     <div class="form-block mb-30">
                                         <p class="mb-10">Username</p>
                                         <input type="text" class="form-control " placeholder="Enter your username" name="username" value="{{ request.user.username }}">
@@ -214,7 +214,7 @@
                                         <p class="mb-10">Wallet address</p>
                                         <input type="text" class="form-control wallet" readonly value="{{ request.user.wallet }}" placeholder="Enter your wallet address">
                                     </div>
-                                    <a class="btn">save</a>
+                                    <a onclick="document.getElementById('profileUpdate').submit()" class="btn">save</a>
                                 </form>
                             </div><!--lk-Settings-->
                         </div> <!--lk-content-->

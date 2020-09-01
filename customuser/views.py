@@ -111,5 +111,18 @@ def profile_index(request):
         pageTitle = 'Личный кабинет | UGS'
         pageDescription = 'Сервис создан для игроков, которые любят и будут рисковать. UGS - финансовая подушка для игроков, которые привыкли играть на крупные суммы'
         allTransfer = Transaction.objects.all()
+        if request.POST:
+            print(request.POST)
+            request.user.username = request.POST.get('username')
+            request.user.email = request.POST.get('email')
+
+            if request.POST.get('password') != '':
+                request.user.set_password(request.POST.get('password'))
+            request.user.save()
+            if request.POST.get('password') != '':
+                return HttpResponseRedirect('/')
+            else:
+                return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
         return render(request, 'pages/lk.html', locals())
 
