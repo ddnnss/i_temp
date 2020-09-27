@@ -524,7 +524,7 @@ a {
 }
 
 .header {
-  background: #000000 url(../images/header-bg.png);
+  background: #000000 url(../images/background.jpg);
   height: 800px;
 }
 
@@ -540,6 +540,11 @@ a {
   -webkit-box-flex: 2;
   -ms-flex-positive: 2;
   flex-grow: 2;
+
+}
+.header-menu__logo img{
+  width: 116px;
+  height: 25px;
 }
 
 .header-menu__nav {

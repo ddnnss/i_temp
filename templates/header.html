@@ -7,25 +7,26 @@
             </div>
             <div class="header-menu__nav flex-block">
                 <a class="text px14 color-w" href="{% static 'iToken WHITEPAPER.pdf' %}">White paper</a>
-                <a class="text px14 color-w" href="#">FAQ</a>
-                <a class="text px14 color-w" href="#">Контакты</a>
+                <a class="text px14 color-w" href="#">About</a>
+                <a class="text px14 color-w" href="#">Contacts</a>
+                <a class="text px14 color-w" href="#">How to buy</a>
             </div>
             <div class="header-menu__nav-small flex-block">
-                <a class="text px14 color-w lsp upper bold" href="#">РУ</a>
+                <a class="text px14 color-w lsp upper bold" href="#">RU</a>
                 {% if not request.user.is_authenticated %}
-{#                    <a href="" class="text px14 color-w lsp upper bold" @click.prevent="modal_login=true">Войти</a>#}
-                    <a href="" class="text px14 color-w lsp upper bold" >coming soon</a>
+                    <a href="" class="text px14 color-w lsp upper bold" @click.prevent="modal_login=true">Login</a>
+{#                    <a href="" class="text px14 color-w lsp upper bold" >coming soon</a>#}
                 {% else %}
-                    <a class="text px14 color-w lsp upper bold" href="{% url 'profile_index' %}">ЛК</a>
+                    <a class="text px14 color-w lsp upper bold" href="{% url 'profile_index' %}">Profile</a>
                 {% endif %}
 
             </div>
-{#            {% if not request.user.is_authenticated %}#}
-{#                <a href="" @click.prevent="modal_register=true" class="reg-btn btn text px14 color-w">Зарегистрироваться</a>#}
-{#            {% else %}#}
-{#                <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w">Выход</a>#}
-{#            {% endif %}#}
-        <a href=""  class="reg-btn btn text px14 color-w">coming soon</a>
+            {% if not request.user.is_authenticated %}
+                <a href="" @click.prevent="modal_register=true" class="reg-btn btn text px14 color-w">Register</a>
+            {% else %}
+                <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w">Logout</a>
+            {% endif %}
+{#        <a href=""  class="reg-btn btn text px14 color-w">coming soon</a>#}
             <div style="cursor: pointer" @click="mobile_menu_active===true?mobile_menu_active=false:mobile_menu_active=true" :class="{toggleActive: mobile_menu_active}" class="mobile-toggle "></div>
             <!--toggleActive-->
         </div>
@@ -33,82 +34,83 @@
         <div :class="{mobileMenuActive: mobile_menu_active}" class="mobile-menu ">
             <ul class="mb-25">
                 <li class="mobile-menu__item">White Paper</li>
-                <li class="mobile-menu__item">FAQ</li>
-                <li class="mobile-menu__item">Контакты</li>
-                <li class="mobile-menu__item">Язык: RU</li>
+                <li class="mobile-menu__item">About</li>
+                <li class="mobile-menu__item">Contacts</li>
+                <li class="mobile-menu__item">How to buy</li>
+                <li class="mobile-menu__item"> RU</li>
             </ul>
             <div class="mobile-menu__btns">
                 {% if not request.user.is_authenticated %}
-                    <span @click.prevent="modal_register=true" class="btn mb-25">зарегистрироваться</span>
-                    <span @click.prevent="modal_login=true" class="btn btn-outline">войти</span>
+                    <span @click.prevent="modal_register=true" class="btn mb-25">Register</span>
+                    <span @click.prevent="modal_login=true" class="btn btn-outline">Login</span>
                 {% else %}
-                    <a href="{% url 'logout_page' %}"  class="btn">Выход</a>
+                    <a href="{% url 'logout_page' %}"  class="btn">Logout</a>
                 {% endif %}
             </div>
 
         </div>
 
-{#        <div class="tech-slideshow mb-120">#}
-{#            <div class="mover-1">#}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__up">1.4%</p>#}
-{#                </div>#}
-{##}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__down">1.4%</p>#}
-{#                </div>#}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__up">1.4%</p>#}
-{#                </div>#}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__up">1.4%</p>#}
-{#                </div>#}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__up">1.4%</p>#}
-{#                </div>#}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__up">1.4%</p>#}
-{#                </div>#}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__up">1.4%</p>#}
-{#                </div>#}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__up">1.4%</p>#}
-{#                </div>#}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__up">1.4%</p>#}
-{#                </div>#}
-{#                <div class="coin-block">#}
-{#                    <p class="text px12 upper color-w">BTC</p>#}
-{#                    <p class="text px12 upper color-g">$11,873.12</p>#}
-{#                    <p class="text px12 coin-block__up">1.4%</p>#}
-{#                </div>#}
-{#            </div>#}
-{##}
-{##}
-{#        </div>#}
+        <div class="tech-slideshow mb-120">
+            <div class="mover-1">
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__down">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+            </div>
+
+
+        </div>
         <div class="header-middle">
-            <h1 class="heading h1 text color-w mb-35">Делайте P2P переводы в 10 раз быстрее</h1>
-            <p class="mb-50">iToken успешно внедрил разработку ERC20, которая позволяет проводить P2P-транзакции в Ethereum в 10 раз быстрее</p>
-            <a href="" @click.prevent="modal_register=true" class="btn center">попробовать</a>
+            <h1 class="heading h1 text color-w mb-35">Crypto Payments up to 60 times faster</h1>
+            <p class="mb-50">iToken has successfully implemented the ERC20 development, which allows P2P transactions in Bitcoin 60 times faster</p>
+            <a href="" @click.prevent="modal_register=true" class="btn center">try now</a>
 
         </div>
     </header>
