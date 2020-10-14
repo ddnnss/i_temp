@@ -536,7 +536,7 @@ a {
 }
 
 .header {
-  background: #000000 url(../images/background.jpg) no-repeat center;
+  background: #000000 url(../images/header-bg.png) no-repeat center;
   background-size: cover;
   height: 800px;
   padding-top: 60px;
@@ -1572,10 +1572,14 @@ a {
     height: 550px !important;
   }
 
-  .header-menu__logo img {
-    width: 70px;
-    height: 15px;
+  /*.header-menu__logo img {*/
+  .header-menu {
+    padding: 20px 10px 20px 10px;
   }
+
+  .mobile-menu.mobileMenuActive {
+    top: 10px;
+}
 
   .header-menu__nav {
     display: none;
