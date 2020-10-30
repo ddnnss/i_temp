@@ -1,41 +1,43 @@
 {% load static %}
-  <footer class="footer">
-        <div class="container">
-            <div class="footer-mobile mb-50">
-{#                    <img src="{% static 'images/logo.png' %}" alt="">#}
-                <ul class="mb-50">
-                     <li class="mobile-menu__item">White Paper</li>
-                <li class="mobile-menu__item">FAQ</li>
-                <li class="mobile-menu__item">Контакты</li>
-                </ul>
-                {% if not request.user.is_authenticated %}
-                 <a @click.prevent="modal_register=true" href="" class=" btn text px14 color-w mb-25">Зарегистрироваться</a>
-                 <a href="" @click.prevent="modal_login=true" class=" btn btn-outline text px14 color-w mb-50">Войти</a>
-                {% else %}
-                   <a  href="{% url 'profile_index' %}" class=" btn text px14 color-w mb-25">Личный кабинет</a>
-                 <a href="{% url 'logout_page' %}"  class=" btn btn-outline text px14 color-w mb-50">Выход</a>
-                {% endif %}
-                <p class="mb-15"><a class="text px24 color-w" href="">itoken.online@gmail.com</a></p>
-                  <ul>
-                         <ul>
-                        <li><a style="margin-right: 20px" href="https://instagram.com/itokenio">
-                            <img width="40" height="40" src="https://www.flaticon.com/svg/static/icons/svg/2111/2111463.svg" alt="">
-                        </a>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-mobile mb-50">
+            {#                    <img src="{% static 'images/logo.png' %}" alt="">#}
+            <ul class="mb-50">
+                <li class="mobile-menu__item"> <a class="text px14 color-w" href="{% static 'kolibricoin-qt.exe' %}">Download Windows KolibriCoin wallet</a></li>
+                <li class="mobile-menu__item"> <a class="text px14 color-w" href="{% static 'kolibricoin-qt.exe' %}">Download Linux KolibriCoin wallet</a></li>
+                <li class="mobile-menu__item"> <a class="text px14 color-w" href="#">White paper</a></li>
+                <li class="mobile-menu__item"> <a class="text px14 color-w" target="_blank" href="https://github.com/kolibricoin/kolibri_coin">GitHub</a></li>
+                <li class="mobile-menu__item">  <a class="text px14 color-w" href="#">Контакты</a></li>
+            </ul>
+            {% if not request.user.is_authenticated %}
+                <a @click.prevent="modal_register=true" href="" class=" btn text px14 color-w mb-25">Зарегистрироваться</a>
+                <a href="" @click.prevent="modal_login=true" class=" btn btn-outline text px14 color-w mb-50">Войти</a>
+            {% else %}
+                <a  href="{% url 'profile_index' %}" class=" btn text px14 color-w mb-25">Личный кабинет</a>
+                <a href="{% url 'logout_page' %}"  class=" btn btn-outline text px14 color-w mb-50">Выход</a>
+            {% endif %}
+            <p class="mb-15"><a class="text px24 color-w" href="">itoken.online@gmail.com</a></p>
+            <ul>
+                <ul>
+                    <li><a style="margin-right: 20px" href="https://instagram.com/itokenio">
+                        <img width="40" height="40" src="https://www.flaticon.com/svg/static/icons/svg/2111/2111463.svg" alt="">
+                    </a>
                         <a style="margin-right: 20px" href="https://mobile.twitter.com/iToken_io">
                             <img width="40" height="40" src="https://www.flaticon.com/svg/static/icons/svg/733/733579.svg" alt="">
                         </a>
                         <a href="">
                             <img width="40" height="40" src="https://www.flaticon.com/svg/static/icons/svg/2111/2111646.svg" alt="">
                         </a>
-                        </li>
-                    </ul>
-                    </ul>
-              </div>
-          <div class="header-menu flex-block footer-menu">
+                    </li>
+                </ul>
+            </ul>
+        </div>
+        <div class="header-menu flex-block footer-menu">
 
-{#            <div class="header-menu__logo">#}
-{#                <img src="{% static 'images/logo.png' %}" alt="">#}
-{#            </div>#}
+            {#            <div class="header-menu__logo">#}
+            {#                <img src="{% static 'images/logo.png' %}" alt="">#}
+            {#            </div>#}
             <div  class="header-menu__nav flex-block">
                 <a class="text px14 color-w" href="{% static 'kolibricoin-qt.exe' %}">Download Windows KolibriCoin wallet</a>
                 <a class="text px14 color-w" href="{% static 'kolibricoin-qt.exe' %}">Download Linux KolibriCoin wallet</a>
@@ -44,50 +46,50 @@
                 <a class="text px14 color-w" href="#">Контакты</a>
             </div>
             <div class="header-menu__nav-small flex-block">
-{% if not request.user.is_authenticated %}
-                <a class="text px14 color-w lsp upper bold" @click.prevent="modal_login=true" href="#">Войти</a>
-{% else %}
-      <a class="text px14 color-w lsp upper bold"  href="{% url 'profile_index' %}">ЛК</a>
+                {% if not request.user.is_authenticated %}
+                    <a class="text px14 color-w lsp upper bold" @click.prevent="modal_login=true" href="#">Войти</a>
+                {% else %}
+                    <a class="text px14 color-w lsp upper bold"  href="{% url 'profile_index' %}">ЛК</a>
                 {% endif %}
             </div>
-              {% if not request.user.is_authenticated %}
-            <a href="" @click.prevent="modal_register=true" class="reg-btn btn text px14 color-w">Зарегистрироваться</a>
-          {% else %}
-                   <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w">Выход</a>
-                {% endif %}
+            {% if not request.user.is_authenticated %}
+                <a href="" @click.prevent="modal_register=true" class="reg-btn btn text px14 color-w">Зарегистрироваться</a>
+            {% else %}
+                <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w">Выход</a>
+            {% endif %}
         </div>
 
-            <div class="footer-middle mb-100">
-                <div class="footer-middle__left">
-                    <ul>
-                        <li><a style="margin-right: 20px" href="https://instagram.com/itokenio">
-                            <img width="40" height="40" src="https://www.flaticon.com/svg/static/icons/svg/2111/2111463.svg" alt="">
-                        </a>
+        <div class="footer-middle mb-100">
+            <div class="footer-middle__left">
+                <ul>
+                    <li><a style="margin-right: 20px" href="https://instagram.com/itokenio">
+                        <img width="40" height="40" src="https://www.flaticon.com/svg/static/icons/svg/2111/2111463.svg" alt="">
+                    </a>
                         <a style="margin-right: 20px" href="https://mobile.twitter.com/iToken_io">
                             <img width="40" height="40" src="https://www.flaticon.com/svg/static/icons/svg/733/733579.svg" alt="">
                         </a>
                         <a href="">
                             <img width="40" height="40" src="https://www.flaticon.com/svg/static/icons/svg/2111/2111646.svg" alt="">
                         </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer-middle__right">
-                    <p><a class="text px24 color-w" href="">support@kolibricoin.io</a></p>
-
-                </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-middle__right">
+                <p><a class="text px24 color-w" href="">support@kolibricoin.io</a></p>
 
             </div>
 
         </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="flex-block flex-center">
-                  <p style="opacity: .25" class="text px12 color-w">KolibriCoin. 2020. Все права защищены</p>
-                    <p style="opacity: .25" class="text px12 color-w"><a href="">Политика конфиденциальности</a></p>
-                </div>
 
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="flex-block flex-center">
+                <p style="opacity: .25" class="text px12 color-w">KolibriCoin. 2020. Все права защищены</p>
+                <p style="opacity: .25" class="text px12 color-w"><a href="">Политика конфиденциальности</a></p>
             </div>
-        </div>
 
-    </footer>
+        </div>
+    </div>
+
+</footer>
