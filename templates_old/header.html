@@ -1,0 +1,166 @@
+{% load static %}
+{% if index %}
+<section style="position: sticky; top: 0; background: rgba(0,0,0,0.7);z-index: 10">
+ <div class="header-menu flex-block">
+            <div class="header-menu__logo">
+               <a href="/"><img src="{% static 'images/logo.png' %}" alt=""></a>
+            </div>
+            <div class="header-menu__nav flex-block">
+                <a class="text px14 color-w header-menu__nav-link" href="{% static 'iToken WHITEPAPER.pdf' %}">White paper</a>
+                <a class="text px14 color-w header-menu__nav-link" href="#">About</a>
+                <a class="text px14 color-w header-menu__nav-link" href="#">Contacts</a>
+                <a class="text px14 color-w header-menu__nav-link" href="#">How to buy</a>
+            </div>
+            <div class="header-menu__nav-small flex-block">
+{#                <a class="text px14 color-w lsp upper bold  header-menu__nav-link" href="#">RU</a>#}
+                {% if not request.user.is_authenticated %}
+                    <a href="" class="text px14 color-w lsp upper bold  header-menu__nav-link" @click.prevent="modal_login=true">Login</a>
+{#                    <a href="" class="text px14 color-w lsp upper bold" >coming soon</a>#}
+                {% else %}
+                    <a class="text px14 color-w lsp upper bold  header-menu__nav-link" href="{% url 'profile_index' %}">Profile</a>
+                {% endif %}
+
+            </div>
+            {% if not request.user.is_authenticated %}
+                <a href="" @click.prevent="modal_register=true" class="reg-btn btn text px14 color-w btn-outline-white">Register</a>
+            {% else %}
+                <a href="{% url 'logout_page' %}"  class="reg-btn btn text px14 color-w btn-outline-white">Logout</a>
+            {% endif %}
+{#        <a href=""  class="reg-btn btn text px14 color-w">coming soon</a>#}
+            <div style="cursor: pointer" @click="mobile_menu_active===true?mobile_menu_active=false:mobile_menu_active=true" :class="{toggleActive: mobile_menu_active}" class="mobile-toggle "></div>
+            <!--toggleActive-->
+        </div>
+    <div class="tech-slideshow mb-120">
+            <div class="mover-1">
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__down">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+                <div class="coin-block">
+                    <p class="text px12 upper color-w">BTC</p>
+                    <p class="text px12 upper color-g">$11,873.12</p>
+                    <p class="text px12 coin-block__up">1.4%</p>
+                </div>
+            </div>
+
+
+        </div>
+</section>
+
+
+    <header class="header mb-250">
+
+        <!--mobileMenuActive-->
+        <div :class="{mobileMenuActive: mobile_menu_active}" class="mobile-menu ">
+            <ul class="mb-25">
+                <li class="mobile-menu__item">White Paper</li>
+                <li class="mobile-menu__item">About</li>
+                <li class="mobile-menu__item">Contacts</li>
+                <li class="mobile-menu__item">How to buy</li>
+                <li class="mobile-menu__item"> RU</li>
+            </ul>
+            <div class="mobile-menu__btns">
+                {% if not request.user.is_authenticated %}
+                    <span @click.prevent="modal_register=true" class="btn mb-25">Register</span>
+                    <span @click.prevent="modal_login=true" class="btn btn-outline-white">Login</span>
+                {% else %}
+                    <a href="{% url 'logout_page' %}"  class="btn">Logout</a>
+                {% endif %}
+            </div>
+
+        </div>
+
+
+        <div class="header-middle">
+            <h1 class="heading h1 text color-w mb-35">Kolibri is an innovative network based on bitcoin and ethereum forks</h1>
+            <p class="mb-50">Kolibri Coin is a currency designed for fast and inexpensive p2p payments.
+Fast and cheap transactions ensured by combined PoW / PoS consensus</p>
+            <a href="http://194.87.111.81:3001/" target="_blank" class="btn center btn-outline-white">Kolibri block explorer</a>
+
+        </div>
+    </header>
+
+{% else %}
+    <div class="container">
+        <div class="header-menu flex-block">
+            <div class="header-menu__logo">
+                <a href="/"><img src="{% static 'images/logo.png' %}" alt=""></a>
+
+            </div>
+
+            <div class="header-menu__nav-small flex-block">
+                <a class="text px14 color-w lsp upper bold" href="#">РУ</a>
+                <div class="flex-block">
+                    <img class="img" src="{% static 'images/user.svg' %}" alt="">
+                    <a class="text px14 color-w lsp upper bold" href="{% url 'logout_page' %}">{{ request.user.username }}</a>
+                </div>
+                <div class="flex-block">
+                    <img class="img" src="{% static 'images/wa_w.svg' %}" alt="">
+                    <p class="text px14 color-w lsp upper bold" >{{ request.user.balance }} TK</p>
+                </div>
+
+            </div>
+            <div style="cursor: pointer" @click="mobile_menu_active===true?mobile_menu_active=false:mobile_menu_active=true" :class="{toggleActive: mobile_menu_active}" class="mobile-toggle "></div>
+
+        </div>
+        <div :class="{mobileMenuActive: mobile_menu_active}" class="mobile-menu ">
+            <ul class="mb-25">
+                <li class="mobile-menu__item">White Paper</li>
+                <li class="mobile-menu__item">FAQ</li>
+                <li class="mobile-menu__item">Контакты</li>
+                <li class="mobile-menu__item">Язык: RU</li>
+            </ul>
+            <div class="mobile-menu__btns">
+                {% if not request.user.is_authenticated %}
+                    <span @click.prevent="modal_register=true" class="btn mb-25">зарегистрироваться</span>
+                    <span @click.prevent="modal_login=true" class="btn btn-outline">войти</span>
+                {% else %}
+                    <a href="{% url 'logout_page' %}"  class="btn">Выход</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+{% endif %}

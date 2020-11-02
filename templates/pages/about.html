@@ -1,0 +1,110 @@
+﻿{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+    <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+	<p style="line-height: 36px" class="heading h3 text color-w mb-30">KolibriCoin aims to improve efficiency in many business areas, from online stores to banks.
+With our technology you can start your business on a cryptocurrency platform.</p>
+        <p>High transaction speed for less transaction of factors such as the PoW/PoS
+ hybrid algorithm and a completely new algorithm that allows the amount of data to be transferred (compared to the standard protocols of most cryptocurrencies and their tokens) with a lower transaction volume, node verification is also simplified.
+Thus, on the proven  blockchain technology, we got a completely new tool, with a production ~ 1000TPS, ideal for working with fast and inexpensive payments.</p>
+	</div>
+{% endblock %}
+{% block js %}
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        var app = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#app',
+
+            data: {
+                mobile_menu_active:false,
+                modal_login:false,
+                login_error:false,
+                login_email:'',
+                password:'',
+                reg_login:'',
+                reg_email:'',
+                reg_agree:false,
+                reg_password1:'',
+                reg_password2:'',
+                reg_error_text:'',
+                modal_register:false,
+                modal_register_step:1,
+            },
+            watch:{
+
+            },
+            mounted: function () {
+                this.$nextTick(function () {
+
+
+                })
+            },
+            computed: {
+
+            },
+
+            methods: {
+                login(){
+                    console.log(this.login_email)
+                    this.login_error=false
+                    let body = {
+                        'email':this.login_email,
+                        'password':this.password
+                    }
+                    fetch('{% url 'login_req' %}', {
+                        method: 'post',
+                        body: JSON.stringify(body),
+                        headers: { "X-CSRFToken": '{{ csrf_token }}' },
+                        credentials: 'same-origin'
+                    }).then(res=>res.json())
+                        .then(res => {
+                            console.log(res)
+                            if(res['status']==='success'){
+                                location.reload();
+                            }
+                            else{
+                                this.login_error = true
+                            }
+                        })
+                },
+                reg(){
+                    this.reg_error_text=''
+                    let body = {
+                        'email':this.reg_email,
+                        'username':this.reg_login,
+                        'password1':this.reg_password1,
+                        'password2':this.reg_password2
+                    }
+                    fetch('{% url 'register' %}', {
+                        method: 'post',
+                        body: JSON.stringify(body),
+                        headers: { "X-CSRFToken": '{{ csrf_token }}' },
+                        credentials: 'same-origin'
+                    }).then(res=>res.json())
+                        .then(res => {
+                            console.log(res)
+                            if(res['status']==='error'){
+
+
+                                if(res['errors']['email']){
+                                    this.reg_error_text = this.reg_error_text + res['errors']['email']
+                                }
+                                if(res['errors']['password2']){
+                                    this.reg_error_text = this.reg_error_text + res['errors']['password2']
+                                }
+
+                            }
+                            else{
+                                location.reload();
+
+                            }
+                        })
+                },
+
+
+            }
+        })
+    </script>
+{% endblock %}

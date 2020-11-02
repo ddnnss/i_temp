@@ -472,9 +472,9 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .where-to-buy__item {
@@ -659,8 +659,8 @@ a {
   top: -100%;
   left: 0;
   right: 0;
-  padding-top: 100px;
-  padding-bottom: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background: #000000;
   z-index: 9;
   -webkit-transition: all .2s linear;
@@ -669,7 +669,7 @@ a {
 }
 
 .mobile-menu.mobileMenuActive {
-  top: 0;
+  top: 80px;
 }
 
 .mobile-menu__item {
@@ -1507,13 +1507,16 @@ a {
   }
 
   .where-to-buy {
-    display: none;
+    /*display: none;*/
+    flex-direction: column;
   }
 
   .where-to-buy__item {
     padding: 60px 0 0 0;
     height: 100%;
     margin-top: 10px;
+    margin: 0 auto 90px;
+
   }
 
   .footer-mobile {
@@ -1578,7 +1581,7 @@ a {
   }
 
   .mobile-menu.mobileMenuActive {
-    top: 0px;
+    top: 80px;
 }
 
   .header-menu__nav {
